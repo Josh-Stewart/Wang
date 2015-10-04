@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <allegro.h>
+#include "allegro.h"
 #include "globals.h"
 #include "list.h"
 #include "transforms.h"
@@ -54,7 +54,8 @@ void plistmove(PList polylist, Point new_xy)
        n--;
  }
 
- cfree(p);
+ //cfree(p); //djgpp
+ free(p);
 
 }
 
@@ -100,8 +101,10 @@ Point plistscalerotate(PList polylist, Point centroid, double scalerotate, void 
        n--;
  }
 
- cfree(p);
- 
+ //cfree(p); //djgpp
+ free(p); //leaks?
+
+
  return centroid;
 
 }

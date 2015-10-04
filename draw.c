@@ -1,5 +1,5 @@
 
-#include <allegro.h>
+#include "allegro.h"
 #include "draw.h"
 #include "list.h"
 #include "globals.h"

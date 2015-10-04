@@ -6,13 +6,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <allegro.h>
+#include "allegro.h"
 #include "linebres.h"
 #include "circlebres.h"
 #include "list.h"
 #include "globals.h"
 
-inline int calc_radius(int x1, int y1, int x2, int y2)
+
+//inline
+int calc_radius(int x1, int y1, int x2, int y2)
 {
 
     return (int) (sqrt

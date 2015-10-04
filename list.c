@@ -7,7 +7,7 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
-#include <allegro.h>
+#include "allegro.h"
 #include "list.h"
 
 void AddLine(List thelist, Line_Type linedata)

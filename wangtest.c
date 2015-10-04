@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <allegro.h>
+#include "allegro.h"
 //#include <math.h>      //for calc_radius
 #include "globals.h"
 #include "list.h"
@@ -46,7 +46,7 @@ int exit_proc(int msg, DIALOG *wang, int c);
 void clearhack(BITMAP *dst, int color);
 
 //allegro optimisations
-BEGIN_COLOR_DEPTH_LIST
+/*BEGIN_COLOR_DEPTH_LIST
    COLOR_DEPTH_24
 END_COLOR_DEPTH_LIST
 
@@ -62,7 +62,7 @@ BEGIN_JOYSTICK_DRIVER_LIST
 
 END_JOYSTICK_DRIVER_LIST
 // end allegro optimisations
-
+*/
 char text_string[42] = "Insert Text Here..";
 
 DIALOG wang_dialog[] = {
@@ -88,46 +88,6 @@ DIALOG wang_dialog[] = {
 /* 18 */{ copynode_proc,        4 ,   126 , 24 ,  24 ,  251,  46,   0 ,	  D_EXIT , 0 ,	0 ,  "Copy" },
 { NULL,              0,    0,    0,    0,    0,    0,    0,    0,       0,    0,    NULL }
  };
-
-int main()
-{
- List thelist;// the linked list
-
- allegro_init();
- install_keyboard();
- install_mouse();
- install_timer();
-
- set_color_depth(COLORDEPTH);
- if ((set_gfx_mode(GFX_AUTODETECT, XMAX, YMAX, 0, 0)) != 0) {
-      allegro_exit();
-      fprintf(stderr, "Couldn't set mode: %s", allegro_error);
-      exit(1);
- }
- thelist = CreateList();
-
- SetDialogColors();
- //put list pointers in all the buttons
- wang_dialog[B_L].dp2 = thelist;
- wang_dialog[B_C].dp2 = thelist;
- wang_dialog[B_P].dp2 = thelist;
- wang_dialog[B_S].dp2 = thelist;
- wang_dialog[B_R].dp2 = thelist;
- wang_dialog[B_Ro].dp2 = thelist;
- wang_dialog[B_Sc].dp2 = thelist;
- wang_dialog[B_Sa].dp2 = thelist;
- wang_dialog[B_Ex].dp2 = thelist;
- wang_dialog[B_T].dp2 = thelist;
- wang_dialog[B_Col].dp2 = thelist;
- wang_dialog[B_Cop].dp2 = thelist;
- 
- do_dialog(wang_dialog, -1);
-
-
- DisposeList(thelist);  //clean up
-
- return 0;
-}
 
 void SelectMode(List thelist)
 {
@@ -1061,3 +1021,46 @@ void clearhack(BITMAP *dst, int color)
 
    bmp_unwrite_line(dst);
 }
+
+
+int main()
+{
+ List thelist;// the linked list
+
+ allegro_init();
+ install_keyboard();
+ install_mouse();
+ install_timer();
+
+ set_color_depth(COLORDEPTH);
+ if ((set_gfx_mode(GFX_AUTODETECT, XMAX, YMAX, 0, 0)) != 0) {
+      allegro_exit();
+      fprintf(stderr, "Couldn't set mode: %s", allegro_error);
+      exit(1);
+ }
+ thelist = CreateList();
+
+ SetDialogColors();
+ //put list pointers in all the buttons
+ wang_dialog[B_L].dp2 = thelist;
+ wang_dialog[B_C].dp2 = thelist;
+ wang_dialog[B_P].dp2 = thelist;
+ wang_dialog[B_S].dp2 = thelist;
+ wang_dialog[B_R].dp2 = thelist;
+ wang_dialog[B_Ro].dp2 = thelist;
+ wang_dialog[B_Sc].dp2 = thelist;
+ wang_dialog[B_Sa].dp2 = thelist;
+ wang_dialog[B_Ex].dp2 = thelist;
+ wang_dialog[B_T].dp2 = thelist;
+ wang_dialog[B_Col].dp2 = thelist;
+ wang_dialog[B_Cop].dp2 = thelist;
+ 
+ do_dialog(wang_dialog, -1);
+
+
+ DisposeList(thelist);  //clean up
+
+ return 0;
+}
+
+END_OF_MAIN()
